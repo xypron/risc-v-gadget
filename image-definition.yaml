@@ -1,0 +1,11 @@
+name: ubuntu-server-riscv64-preinstalled
+display-name: Ubuntu Server RISC-V preinstalled
+revision: 1
+architecture: amd64
+series: oracular
+class: preinstalled
+artifacts:
+  img:
+    - name: ubuntu-24.10-preinstalled-server-riscv64.img
+  manifest:
+    name: ubuntu-24.01-preinstalled-server-riscv64.manifest
