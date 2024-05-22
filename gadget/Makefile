@@ -5,11 +5,16 @@ DESTDIR ?= install
 all:
 	make install/u-boot-sifive-unmatched
 	make install/u-boot-starfive
+	make install/grub
 	make meta
 
 meta:
 	mkdir -p $(DESTDIR)/meta
 	cp gadget-riscv64.yaml $(DESTDIR)/meta/gadget.yaml
+
+install/grub:
+	mkdir -p $(DESTDIR)/grub
+	cp grub.cfg $(DESTDIR)/grub/
 
 install/u-boot-sifive-unmatched:
 	mkdir -p build
