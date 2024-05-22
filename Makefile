@@ -1,6 +1,15 @@
 
 SERIES ?= ocular
 
+all:
+	make install/u-boot-sifive-unmatched
+	make install/u-boot-starfive
+	make meta
+
+meta:
+	mkdir -p meta
+	cp gadget-riscv64.yaml meta/gadget.yaml
+
 install/u-boot-sifive-unmatched:
 	mkdir -p build
 	rm -rf build/u-boot-sifive*
