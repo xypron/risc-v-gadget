@@ -13,7 +13,11 @@ meta:
 	cp gadget-riscv64.yaml $(DESTDIR)/meta/gadget.yaml
 
 install/grub:
+	mkdir -p build
+	cd build && wget http://ftp.us.debian.org/debian/pool/main/g/grub2/grub-efi-riscv64-unsigned_2.12-3_riscv64.deb
+	cd build && dpkg -x grub-efi-riscv64-unsigned*.deb grub/
 	mkdir -p $(DESTDIR)/grub
+	cp grub/usr/lib/grub/riscv64-efi/monolithic/grubriscv64.efi $(DESTDIR)/grub/
 	cp grub.cfg $(DESTDIR)/grub/
 
 install/u-boot-sifive-unmatched:
