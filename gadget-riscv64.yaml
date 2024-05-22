@@ -1,3 +1,4 @@
+---
 volumes:
   riscv:
     schema: gpt
@@ -16,3 +17,4 @@ volumes:
         type: 0FC63DAF-8483-4772-8E79-3D69D8477DE4
         filesystem: ext4
         filesystem-label: root
+        size: 3072M
