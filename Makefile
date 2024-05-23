@@ -45,3 +45,13 @@ install/u-boot-starfive:
 	cp build/u-boot-starfive/usr/lib/u-boot/starfive_visionfive2/u-boot-spl.bin.normal.out \
 	$(DESTDIR)/u-boot-starfive/
 	rm -rf build/u-boot-starfive*
+
+install/u-boot-microchip:
+	mkdir -p build
+	rm -rf build/u-boot-microchip*
+	cd build && pull-lp-debs u-boot-microchip '' $(SERIES)
+	cd build && dpkg -x u-boot-microchip*.deb u-boot-microchip/
+	mkdir -p $(DESTDIR)/u-boot-microchip
+	cp build/u-boot-microchip/usr/lib/u-boot/microchip_icicle/u-boot.payload \
+	$(DESTDIR)/u-boot-microchip/
+	rm -rf build/u-boot-microchip*
