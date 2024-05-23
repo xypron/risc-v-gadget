@@ -10,9 +10,9 @@ volumes:
         filesystem-label: esp
         size: 100M
         content:
-          - source: install/grub/grubrisc64.efi
+          - source: grub/grubriscv64.efi
             target: EFI/boot/bootriscv64.efi
-          - source: install/grub/grub.cfg
+          - source: grub/grub.cfg
             target: EFI/debian/grub.cfg
       - name: Root Partition
         type: 0FC63DAF-8483-4772-8E79-3D69D8477DE4
