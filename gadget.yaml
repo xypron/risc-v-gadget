@@ -9,6 +9,7 @@ volumes:
         filesystem: vfat
         filesystem-label: esp
         size: 100M
+        role: system-boot
         content:
           - source: grub/grubriscv64.efi
             target: EFI/boot/bootriscv64.efi
@@ -19,3 +20,4 @@ volumes:
         filesystem: ext4
         filesystem-label: root
         size: 3072M
+        role: system-data
