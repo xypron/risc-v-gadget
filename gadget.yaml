@@ -6,10 +6,14 @@ volumes:
     structure:
       - name: main U-Boot for SiFive HiFive Unmatched board
         size: 16M
+        # random value for type
+        type: 537B4768-474D-42EB-99C7-D8BCE5A57079
         offset: 1065984
+        size: 16M
         content:
           - image: u-boot-sifive-unmatched/u-boot.itb
       - name: main U-Boot for StarFive VisionFive 2 board
+        # random value for type
         type: 816E2DB1-6FE4-4797-B3FF-2DE37CB85318
         size: 16M
         content:
