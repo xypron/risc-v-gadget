@@ -25,6 +25,9 @@ rootfs:
     branch: noble
     names:
       - cloud-image
+      - server
+      - minimal
+      - standard
 customization:
   cloud-init:
     user-data: |
