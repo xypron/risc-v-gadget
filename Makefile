@@ -6,6 +6,7 @@ all:
 	mkdir -p $(DESTDIR)
 	make install/u-boot-sifive-unmatched
 	make install/u-boot-starfive
+	make install/u-boot-microchip
 	make install/grub
 	make meta
 	find $$(pwd)/../..
