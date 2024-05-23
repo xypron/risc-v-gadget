@@ -3,21 +3,23 @@ SERIES ?= ocular
 DESTDIR ?= install
 
 all:
+	mkdir -p $(DESTDIR)
 	make install/u-boot-sifive-unmatched
 	make install/u-boot-starfive
 	make install/grub
 	make meta
+	find $$(pwd)/../..
 
 meta:
 	mkdir -p $(DESTDIR)/meta
-	cp gadget-riscv64.yaml $(DESTDIR)/meta/gadget.yaml
+	cp gadget.yaml $(DESTDIR)/meta/
 
 install/grub:
 	mkdir -p build
 	cd build && wget http://ftp.us.debian.org/debian/pool/main/g/grub2/grub-efi-riscv64-unsigned_2.12-3_riscv64.deb
 	cd build && dpkg -x grub-efi-riscv64-unsigned*.deb grub/
 	mkdir -p $(DESTDIR)/grub
-	cp grub/usr/lib/grub/riscv64-efi/monolithic/grubriscv64.efi $(DESTDIR)/grub/
+	cp ./build/grub/usr/lib/grub/riscv64-efi/monolithic/grubriscv64.efi $(DESTDIR)/grub/
 	cp grub.cfg $(DESTDIR)/grub/
 
 install/u-boot-sifive-unmatched:

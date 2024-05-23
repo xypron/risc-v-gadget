@@ -1,11 +1,52 @@
 name: ubuntu-server-riscv64-preinstalled
 display-name: Ubuntu Server RISC-V preinstalled
 revision: 1
-architecture: amd64
-series: oracular
+architecture: riscv64
+series: noble
 class: preinstalled
+kernel: linux-image-generic
+gadget:
+  url: "https://github.com/xypron/risc-v-gadget.git"
+  type: "git"
+  branch: "master"
+rootfs:
+  archive: ubuntu
+  sources-list-deb822: true
+  components:
+    - main
+    - restricted
+    - universe
+    - multiverse
+  mirror: "http://ports.ubuntu.com/ubuntu-ports/"
+  pocket: updates
+  seed:
+    urls:
+      - "https://git.launchpad.net/~ubuntu-core-dev/ubuntu-seeds/+git/"
+    branch: noble
+    names:
+      - cloud-image
+customization:
+  cloud-init:
+    user-data: |
+      #cloud-config
+      name: ubuntu
+      password: ubuntu
+  extra-snaps:
+    - name: snapd
+  fstab:
+    - label: "root"
+      mountpoint: "/"
+      filesystem-type: "ext4"
+      dump: false
+      fsck-order: 1
+    - label: "esp"
+      mountpoint: "/boot/efi"
+      filesystem-type: "vfat"
+      mount-options: "defaults"
+      dump: false
+      fsck-order: 1
 artifacts:
   img:
-    - name: ubuntu-24.10-preinstalled-server-riscv64.img
+    - name: ubuntu-24.04-preinstalled-server-riscv64.img
   manifest:
-    name: ubuntu-24.01-preinstalled-server-riscv64.manifest
+    name: ubuntu-24.04-preinstalled-server-riscv64.manifest
