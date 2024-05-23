@@ -4,6 +4,29 @@ volumes:
     schema: gpt
     bootloader: grub
     structure:
+      - name: main U-Boot for SiFive HiFive Unmatched board
+        size: 16M
+        offset: 1065984
+        content:
+          - image: u-boot-sifive-unmatched/u-boot.itb
+      - name: main U-Boot for StarFive VisionFive 2 board
+        type: 816E2DB1-6FE4-4797-B3FF-2DE37CB85318
+        size: 16M
+        content:
+          - image: u-boot-starfive/u-boot.itb
+      - name: U-Boot-SPL for Unmatched board
+        type: 5B193300-FC78-40CD-8002-E86C45580B47
+        size: 1M
+        content:
+          - image: u-boot-sifive-unmatched/u-boot-spl.bin
+      - name: U-Boot-SPL for StarFive VisionFive 2 board
+        type: 2E54B353-1271-4842-806F-E436D6AF6985
+        size: 1M
+        content:
+          - image: u-boot-starfive/u-boot-spl.bin.normal.out
+      - name: U-Boot for Microchip Icicle Kit
+        type: 21686148-6449-6E6F-744E-656564454649
+        size: 16M
       - name: EFI System
         type: C12A7328-F81F-11D2-BA4B-00A0C93EC93B
         filesystem: vfat
