@@ -1,3 +1,4 @@
+---
 name: ubuntu-server-riscv64-preinstalled
 display-name: Ubuntu Server RISC-V preinstalled
 revision: 1
@@ -34,6 +35,9 @@ customization:
       #cloud-config
       name: ubuntu
       password: ubuntu
+  extra-packages:
+    -
+      name: "grub-efi-riscv64"
   extra-snaps:
     - name: snapd
   fstab:
