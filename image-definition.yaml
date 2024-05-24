@@ -33,8 +33,12 @@ customization:
   cloud-init:
     user-data: |
       #cloud-config
-      name: ubuntu
-      password: ubuntu
+      chpasswd:
+        expire: true
+        users:
+          - name: ubuntu
+            password: ubuntu
+            type: text
   extra-packages:
     -
       name: "flash-kernel"
