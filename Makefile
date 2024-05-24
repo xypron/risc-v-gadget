@@ -4,6 +4,7 @@ DESTDIR ?= install
 
 all:
 	mkdir -p $(DESTDIR)
+	make install/dtb
 	make install/u-boot-sifive-unmatched
 	make install/u-boot-starfive
 	make install/u-boot-microchip
@@ -14,6 +15,16 @@ all:
 meta:
 	mkdir -p $(DESTDIR)/meta
 	cp gadget.yaml $(DESTDIR)/meta/
+
+install/dtb:
+	mkdir -p build
+	rm -rf build/linux-modules*
+	cd build && pull-lp-debs linux-riscv '' $(SERIES)
+	cd build && dpkg -x linux-modules*.deb linux-modules/
+	mkdir -p $(DESTDIR)/dtb
+	cp -r ./build/linux-modules/lib/firmware/*-generic/device-tree/* \
+	$(DESTDIR)/dtb
+	rm -rf build/linux-modules*
 
 install/grub:
 	mkdir -p build
