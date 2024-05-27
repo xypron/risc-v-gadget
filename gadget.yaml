@@ -62,3 +62,6 @@ volumes:
         filesystem-label: root
         size: 3072M
         role: system-data
+        content:
+          - source: grub/10_cmdline.cfg
+            target: /etc/default/grub.d/10_cmdline.cfg
