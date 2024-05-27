@@ -4,7 +4,7 @@ DESTDIR ?= install
 
 all:
 	mkdir -p $(DESTDIR)
-	make install/cloud-init
+	make install/cidata
 	make install/dtb
 	make install/grub
 	make meta
@@ -17,9 +17,9 @@ meta:
 	mkdir -p $(DESTDIR)/meta
 	cp gadget.yaml $(DESTDIR)/meta/
 
-install/cloud-init:
-	mkdir -p $(DESTDIR)/cloud-init
-	cp user-data $(DESTDIR)/cloud-init/
+install/cidata:
+	mkdir -p $(DESTDIR)/cidata
+	cp user-data $(DESTDIR)/cidata/
 
 install/dtb:
 	rm -rf build
