@@ -50,7 +50,7 @@ volumes:
             target: dtb/
       - name: CIDATA
         type: 0FC63DAF-8483-4772-8E79-3D69D8477DE4
-        filesystem: vfat
+        filesystem: vfat-16
         filesystem-label: CIDATA
         size: 4M
         content:
