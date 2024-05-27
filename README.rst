@@ -8,6 +8,8 @@ Build image
 
     sudo ubuntu-image --debug classic image-definition.yaml
 
+For debugging add --workdir /tmp/workdir.
+
 First boot
 ----------
 
