@@ -48,6 +48,14 @@ volumes:
             target: EFI/debian/grub.cfg
           - source: dtb/
             target: dtb/
+      - name: CIDATA
+        type: 0FC63DAF-8483-4772-8E79-3D69D8477DE4
+        filesystem: vfat
+        filesystem-label: CIDATA
+        size: 4M
+        content:
+          - source: cidata/user-data
+            target: user-data
       - name: Root Partition
         type: 0FC63DAF-8483-4772-8E79-3D69D8477DE4
         filesystem: ext4

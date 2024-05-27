@@ -4,17 +4,22 @@ DESTDIR ?= install
 
 all:
 	mkdir -p $(DESTDIR)
+	make install/cloud-init
 	make install/dtb
-	make install/u-boot-sifive-unmatched
-	make install/u-boot-starfive
-	make install/u-boot-microchip
 	make install/grub
 	make meta
+	make install/u-boot-microchip
+	make install/u-boot-sifive-unmatched
+	make install/u-boot-starfive
 	find $$(pwd)/../..
 
 meta:
 	mkdir -p $(DESTDIR)/meta
 	cp gadget.yaml $(DESTDIR)/meta/
+
+install/cloud-init:
+	mkdir -p $(DESTDIR)/cloud-init
+	cp user-data $(DESTDIR)/cloud-init/
 
 install/dtb:
 	rm -rf build
