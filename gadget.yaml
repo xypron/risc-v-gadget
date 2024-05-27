@@ -54,6 +54,8 @@ volumes:
         filesystem-label: CIDATA
         size: 4M
         content:
+          - source: cidata/meta-data
+            target: meta-data
           - source: cidata/user-data
             target: user-data
       - name: Root Partition

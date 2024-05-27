@@ -20,6 +20,8 @@ meta:
 install/cidata:
 	mkdir -p $(DESTDIR)/cidata
 	cp user-data $(DESTDIR)/cidata/
+	cp meta-data $(DESTDIR)/cidata/
+	touch $(DESTDIR)/cidata/vendor-data
 
 install/dtb:
 	rm -rf build
