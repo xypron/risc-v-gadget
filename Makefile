@@ -41,7 +41,6 @@ install/grub:
 	mkdir -p $(DESTDIR)/grub
 	cp ./build/grub/usr/lib/grub/riscv64-efi/monolithic/grubriscv64.efi $(DESTDIR)/grub/
 	cp grub.cfg $(DESTDIR)/grub/
-	cp 10_cmdline.cfg $(DESTDIR)/grub/
 	rm -rf build
 
 install/u-boot-sifive-unmatched:
