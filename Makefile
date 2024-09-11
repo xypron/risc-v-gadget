@@ -1,5 +1,5 @@
 
-SERIES ?= ocular
+SERIES ?= noble
 DESTDIR ?= install
 
 all:
@@ -8,14 +8,7 @@ all:
 	make install/dtb
 	make install/grub
 	make meta
-	make install/u-boot-microchip
-	make install/u-boot-sifive-unmatched
-	make install/u-boot-starfive
-	find $$(pwd)/../..
-
-meta:
-	mkdir -p $(DESTDIR)/meta
-	cp gadget.yaml $(DESTDIR)/meta/
+	find .
 
 install/cidata:
 	mkdir -p $(DESTDIR)/cidata
@@ -26,54 +19,23 @@ install/cidata:
 install/dtb:
 	rm -rf build
 	mkdir build
-	cd build && pull-lp-debs linux-riscv '' $(SERIES)
-	cd build && dpkg -x linux-modules*.deb linux-modules/
+	cd build && wget https://launchpad.net/~sifive-sandbox/+archive/ubuntu/linux/+files/linux-image-6.6.21-35-g29ac17434e52-eswin_6.6.21-35-g29ac17434e52-0ubuntu0~ppa13_all.deb
+	cd build && dpkg -x linux-image*.deb linux-modules/
 	mkdir -p $(DESTDIR)/dtb
-	cp -r ./build/linux-modules/lib/firmware/*-generic/device-tree/* \
+	cp -r ./build/linux-modules/usr/lib/firmware/*-eswin/device-tree/* \
 	$(DESTDIR)/dtb
 	rm -rf build
 
 install/grub:
 	rm -rf build
 	mkdir build
-	cd build && wget http://ftp.us.debian.org/debian/pool/main/g/grub2/grub-efi-riscv64-unsigned_2.12-3_riscv64.deb
+	cd build && wget http://ftp.us.debian.org/debian/pool/main/g/grub2/grub-efi-riscv64-unsigned_2.12-5_riscv64.deb
 	cd build && dpkg -x grub-efi-riscv64-unsigned*.deb grub/
 	mkdir -p $(DESTDIR)/grub
 	cp ./build/grub/usr/lib/grub/riscv64-efi/monolithic/grubriscv64.efi $(DESTDIR)/grub/
 	cp grub.cfg $(DESTDIR)/grub/
 	rm -rf build
 
-install/u-boot-sifive-unmatched:
-	rm -rf build
-	mkdir build
-	rm -rf build/u-boot-sifive*
-	cd build && pull-lp-debs u-boot-sifive '' $(SERIES)
-	cd build && dpkg -x u-boot-sifive*.deb u-boot-sifive/
-	mkdir -p $(DESTDIR)/u-boot-sifive-unmatched
-	cp ./build/u-boot-sifive/usr/lib/u-boot/sifive_unmatched/u-boot-spl.bin \
-	$(DESTDIR)/u-boot-sifive-unmatched/
-	cp ./build/u-boot-sifive/usr/lib/u-boot/sifive_unmatched/u-boot.itb \
-	$(DESTDIR)/u-boot-sifive-unmatched/
-	rm -rf build
-
-install/u-boot-starfive:
-	rm -rf build
-	mkdir build
-	cd build && pull-lp-debs u-boot-starfive '' $(SERIES)
-	cd build && dpkg -x u-boot-starfive*.deb u-boot-starfive/
-	mkdir -p $(DESTDIR)/u-boot-starfive
-	cp build/u-boot-starfive/usr/lib/u-boot/starfive_visionfive2/u-boot.itb \
-	$(DESTDIR)/u-boot-starfive/
-	cp build/u-boot-starfive/usr/lib/u-boot/starfive_visionfive2/u-boot-spl.bin.normal.out \
-	$(DESTDIR)/u-boot-starfive/
-	rm -rf build
-
-install/u-boot-microchip:
-	rm -rf build
-	mkdir build
-	cd build && pull-lp-debs u-boot-microchip '' $(SERIES)
-	cd build && dpkg -x u-boot-microchip*.deb u-boot-microchip/
-	mkdir -p $(DESTDIR)/u-boot-microchip
-	cp build/u-boot-microchip/usr/lib/u-boot/microchip_icicle/u-boot.payload \
-	$(DESTDIR)/u-boot-microchip/
-	rm -rf build
+meta:
+	mkdir -p $(DESTDIR)/meta
+	cp gadget.yaml $(DESTDIR)/meta/

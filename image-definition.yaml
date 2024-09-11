@@ -5,11 +5,11 @@ revision: 1
 architecture: riscv64
 series: noble
 class: preinstalled
-kernel: linux-image-generic
+kernel: linux-eswin
 gadget:
   url: "https://github.com/xypron/risc-v-gadget.git"
   type: "git"
-  branch: "master"
+  branch: "p550"
 rootfs:
   archive: ubuntu
   sources-list-deb822: true
@@ -29,6 +29,9 @@ rootfs:
       - server
       - minimal
       - standard
+extra-ppas:
+    - name: sifive-sandbox/linux
+      fingerprint: 07A4AB084F5B6251B9EB460718EF46BDC6A17D42
 customization:
   cloud-init:
     user-data: |
