@@ -39,3 +39,10 @@ install/grub:
 meta:
 	mkdir -p $(DESTDIR)/meta
 	cp gadget.yaml $(DESTDIR)/meta/
+
+image:
+	sudo ubuntu-image --workdir /tmp/workdir classic image-definition.yaml
+
+image-debug:
+	sudo rm -rf /tmp/workdir
+	sudo ubuntu-image --workdir /tmp/workdir --debug classic image-definition.yaml
