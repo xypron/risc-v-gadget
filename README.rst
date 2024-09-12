@@ -10,6 +10,8 @@ Build image
 
 For debugging add --workdir /tmp/workdir.
 
+The produced image file ubuntu-<release>-preinstalled-server-riscv64.img.
+
 First boot
 ----------
 
