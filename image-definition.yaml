@@ -30,7 +30,8 @@ rootfs:
       - minimal
       - standard
 extra-ppas:
-    - name: sifive-sandbox/linux
+    -
+      name: sifive-sandbox/linux
       fingerprint: 07A4AB084F5B6251B9EB460718EF46BDC6A17D42
 customization:
   cloud-init:
