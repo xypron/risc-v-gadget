@@ -62,6 +62,23 @@ customization:
       mount-options: "defaults"
       dump: false
       fsck-order: 1
+  manual:
+    make-dirs:
+      - path: /etc/default/grub.d
+        permissions: 0755
+      - path: /etc/flash-kernel
+        permissions: 0755
+    copy-file:
+      - destination: /etc/default/grub.d/zz_p550.cfg
+        source: grub/zz_p550.cfg
+      - destination: /etc/flash-kernel/db
+        source: flash-kernel/db
+      - destination: /etc/flash-kernel/machine
+        source: flash-kernel/machine
+      - destination: /tmp/customize.sh
+        source: customize.sh
+    execute:
+      - path: /tmp/customize.sh
 artifacts:
   img:
     - name: ubuntu-24.04-preinstalled-server-riscv64.img
