@@ -41,7 +41,7 @@ meta:
 	cp gadget.yaml $(DESTDIR)/meta/
 
 image:
-	sudo ubuntu-image --workdir /tmp/workdir classic image-definition.yaml
+	sudo ubuntu-image classic image-definition.yaml
 
 image-debug:
 	sudo rm -rf /tmp/workdir
