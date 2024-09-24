@@ -77,3 +77,10 @@ install/u-boot-microchip:
 	cp build/u-boot-microchip/usr/lib/u-boot/microchip_icicle/u-boot.payload \
 	$(DESTDIR)/u-boot-microchip/
 	rm -rf build
+
+image:
+	sudo ubuntu-image classic image-definition.yaml
+
+image-debug:
+	sudo rm -rf workdir
+	sudo ubuntu-image --workdir workdir --debug classic image-definition.yaml
