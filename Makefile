@@ -1,5 +1,5 @@
 
-SERIES ?= ocular
+SERIES ?= noble
 DESTDIR ?= install
 
 all:
