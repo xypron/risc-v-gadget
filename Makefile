@@ -36,7 +36,7 @@ install/dtb:
 install/grub:
 	rm -rf build
 	mkdir build
-	cd build && wget http://ftp.us.debian.org/debian/pool/main/g/grub2/grub-efi-riscv64-unsigned_2.12-5_riscv64.deb
+	cd build && wget http://snapshot.debian.org/archive/debian/20240716T023930Z/pool/main/g/grub2/grub-efi-riscv64-unsigned_2.12-5_riscv64.deb
 	cd build && dpkg -x grub-efi-riscv64-unsigned*.deb grub/
 	mkdir -p $(DESTDIR)/grub
 	cp ./build/grub/usr/lib/grub/riscv64-efi/monolithic/grubriscv64.efi $(DESTDIR)/grub/
