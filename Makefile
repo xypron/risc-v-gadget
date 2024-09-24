@@ -47,7 +47,7 @@ install/u-boot-sifive-unmatched:
 	rm -rf build
 	mkdir build
 	rm -rf build/u-boot-sifive*
-	cd build && pull-lp-debs u-boot-sifive '' $(SERIES)
+	cd build && pull-lp-debs -a riscv64 u-boot-sifive '' $(SERIES)
 	cd build && dpkg -x u-boot-sifive*.deb u-boot-sifive/
 	mkdir -p $(DESTDIR)/u-boot-sifive-unmatched
 	cp ./build/u-boot-sifive/usr/lib/u-boot/sifive_unmatched/u-boot-spl.bin \
@@ -59,7 +59,7 @@ install/u-boot-sifive-unmatched:
 install/u-boot-starfive:
 	rm -rf build
 	mkdir build
-	cd build && pull-lp-debs u-boot-starfive '' $(SERIES)
+	cd build && pull-lp-debs -a riscv64 u-boot-starfive '' $(SERIES)
 	cd build && dpkg -x u-boot-starfive*.deb u-boot-starfive/
 	mkdir -p $(DESTDIR)/u-boot-starfive
 	cp build/u-boot-starfive/usr/lib/u-boot/starfive_visionfive2/u-boot.itb \
@@ -71,7 +71,7 @@ install/u-boot-starfive:
 install/u-boot-microchip:
 	rm -rf build
 	mkdir build
-	cd build && pull-lp-debs u-boot-microchip '' $(SERIES)
+	cd build && pull-lp-debs -a riscv64 u-boot-microchip '' $(SERIES)
 	cd build && dpkg -x u-boot-microchip*.deb u-boot-microchip/
 	mkdir -p $(DESTDIR)/u-boot-microchip
 	cp build/u-boot-microchip/usr/lib/u-boot/microchip_icicle/u-boot.payload \
