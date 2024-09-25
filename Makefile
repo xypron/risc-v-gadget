@@ -11,7 +11,6 @@ all:
 	make install/u-boot-microchip
 	make install/u-boot-sifive-unmatched
 	make install/u-boot-starfive
-	find $$(pwd)/../..
 
 meta:
 	mkdir -p $(DESTDIR)/meta
