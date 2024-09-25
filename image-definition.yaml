@@ -47,7 +47,7 @@ customization:
   extra-snaps:
     - name: snapd
   fstab:
-    - label: "root"
+    - label: "writable"
       mountpoint: "/"
       filesystem-type: "ext4"
       dump: false
